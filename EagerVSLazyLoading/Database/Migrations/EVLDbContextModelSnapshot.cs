@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EagerVSLazyLoading.Database.Migrations
 {
-    [DbContext(typeof(EVLDbContext))]
+    [DbContext(typeof(EagerDbContext))]
     partial class EVLDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

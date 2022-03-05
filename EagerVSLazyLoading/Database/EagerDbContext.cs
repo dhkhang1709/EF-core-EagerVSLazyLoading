@@ -1,10 +1,11 @@
-﻿using EagerVSLazyLoading.Model;
+﻿using EagerVSLazyLoading.Helper;
+using EagerVSLazyLoading.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace EagerVSLazyLoading.Database
 {
-    public class EVLDbContext : DbContext
+    internal class EagerDbContext : DbContext
     {
         private void SeedData(ModelBuilder modelBuilder)
         {
@@ -38,12 +39,8 @@ namespace EagerVSLazyLoading.Database
 
         override protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var conStr = "server=localhost;uid=root;pwd=P@ssw0rd;database=EagerVSLazy";
-
             optionsBuilder
-                .UseLazyLoadingProxies()
-                .UseMySql(conStr, ServerVersion.AutoDetect(conStr));
-
+                .UseMySql(Constant.ConnStr, ServerVersion.AutoDetect(Constant.ConnStr));
         }
 
         override protected void OnModelCreating(ModelBuilder modelBuilder)
@@ -51,7 +48,7 @@ namespace EagerVSLazyLoading.Database
             SeedData(modelBuilder);
         }
 
-        DbSet<Department> Departments { get; set; }
-        DbSet<User> Users { get; set; }
+        internal DbSet<Department> Departments { get; set; }
+        internal DbSet<User> Users { get; set; }
     }
 }

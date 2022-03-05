@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EagerVSLazyLoading.Database.Migrations
 {
-    [DbContext(typeof(EVLDbContext))]
+    [DbContext(typeof(EagerDbContext))]
     [Migration("20220304165149_AddSeedData")]
     partial class AddSeedData
     {
